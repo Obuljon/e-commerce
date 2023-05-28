@@ -1,0 +1,64 @@
+<header class="site-navbar" role="banner">
+    <div class="site-navbar-top">
+      <div class="container">
+        <div class="row align-items-center">
+
+          <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+            <form action="/search" method="post" class="site-block-top-search">
+              <span class="icon icon-search2"></span>
+              <input type="text" class="form-control border-0" placeholder="Search" name="search">
+            </form>
+          </div>
+
+          <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+            <div class="site-logo">
+              <a href="/" class="js-logo-clone">Shoppers</a>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+            <div class="site-top-icons">
+              <ul>
+                <li>
+                    <a href="/pagecart%>" class="site-cart">
+                    <span class="icon icon-shopping_cart"></span>
+                    <% if(locals.carts){%>
+                      <span class="count" id="cartnumber"><%= locals.carts.items.length %></span>
+                      <%}%>
+                  </a>
+                </li> 
+              </ul>
+            </div> 
+          </div>
+
+        </div>
+      </div>
+    </div> 
+    <nav class="site-navigation text-right text-md-center" role="navigation">
+      <div class="container" id="message">
+        <ul class="site-menu js-clone-nav d-none d-md-block">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li><a href="/shop/all/all/all/all/1">Shop</a></li>
+          <li><a href="/contant">Contact</a></li>
+        </ul>
+        <% if (message.errors) {
+    message.errors.forEach(msg => { %>
+      <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+        <div>
+        <%= msg %>  
+        </div>
+      </div>
+      <% }) } else if (message.success) { %> 
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+          <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+          <div>
+            <%= message.success %>
+          </div>
+        </div>
+      <% } %>
+      </div>
+    </nav>
+  </header>

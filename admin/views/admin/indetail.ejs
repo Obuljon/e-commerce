@@ -1,0 +1,137 @@
+
+
+    <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+
+
+    <div class="app-content content">
+      <div class="content-wrapper">
+        <div class="content-wrapper-before"></div>
+        <div class="content-header row">
+          <div class="content-header-left col-md-4 col-12 mb-2">
+            <h3 class="content-header-title">learn more </h3>
+          </div>
+          <div class="content-header-right col-md-8 col-12">
+            <div class="breadcrumbs-top float-md-right">
+              <div class="breadcrumb-wrapper mr-1">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a>
+                  </li>
+                  <li class="breadcrumb-item active">Cards
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-body"><!-- ../../../theme-assets/images/carousel/22.jpg -->
+
+<!-- Header footer section start -->
+<section id="header-footer">
+	<div class="row match-height">
+		
+        <%let totol = 0%>
+        <%data.cart.forEach(e => {%>
+           
+            <%= totol += (e.price * e.value)%>
+        <div class="col-lg-4 col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title"><%=e.name%></h4>
+					<h6 class="card-subtitle text-muted"><%=e.price%> $ * <%= e.value %> = <%=e.price * e.value%> $</h6>
+				</div>
+				<img class="" src="uploads/<%=e.image%>" alt="Card image cap">
+				<div class="card-body">
+					<p class="card-text"></p>
+					<a href="/" class="card-link">Another link</a>
+				</div>
+				<div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
+					<span class="float-left"></span>
+					<span class="float-right">
+						<p class="card-link">
+                             <%= totol %> $
+							<i class="la la-angle-right"></i>
+                        </p>
+					</span>
+				</div>
+			</div>
+		</div>
+
+		 <%})%>
+
+	</div>
+</section>
+<!-- Header footer section End -->
+
+<!-- Content types section start -->
+<section id="content-types">
+	<div class="row">
+		<div class="col-12 mt-3 mb-1">
+			<h4 class="text-uppercase">User address</h4>
+			<p></p>
+		</div>
+	</div>
+	<div class="row match-height">
+		<div class="col-xl-6 col-md-6 col-sm-12">
+			<div class="card">
+				<div class="card-content">
+					<div class="card-body">
+						<h4 class="card-title"></h4>
+						<p class="card-text"></p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							lastname : <%=data.lname%>
+						</li>
+						<li class="list-group-item">
+							name: <%= data.fname %>
+						</li>
+						<li class="list-group-item">
+							companyname: <%= data.companyname %>
+						</li>
+						<li class="list-group-item">
+							region: <%= data.region %>
+						</li>
+						<li class="list-group-item">
+							district: <%= data.district %>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-6 col-md-6 col-sm-12">
+			<div class="card">
+				<div class="card-content">
+					<div class="card-body">
+						<h4 class="card-title"></h4>
+						<p class="card-text"></p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							address : <%= data.address %>
+						</li>
+						<li class="list-group-item">
+							email_address : <%= data.email_address %>
+						</li>
+						<li class="list-group-item">
+							phone : <%= data.phone %>
+						</li>
+						<li class="list-group-item">
+							<p><%= data.order_notes %></p>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- Content types section end -->
+
+
+      </div>
+      </div>
+    </div>
+    <!-- ////////////////////////////////////////////////////////////////////////////-->

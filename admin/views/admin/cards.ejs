@@ -1,0 +1,89 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">Cards</h3>
+        </div>
+        <div class="content-header-right col-md-8 col-12">
+          <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Cards
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-body"><!-- ../../../theme-assets/images/carousel/22.jpg -->
+
+<!-- Header footer section start -->
+<section id="header-footer">
+  <div class="match-height">
+      
+    <div class="">
+        <div class="card">
+            <div class="card-content">
+                <div id="recent-buyers" class="media-list">
+
+                    <% users.forEach(e => { %>
+                  
+                    <div class="media border-0">
+                        <div class="media-body w-100">
+                            <span class="list-group-item-heading">F.I.O - (<%= e.lname%></span>
+                            <span class="list-group-item-heading"><%= e.fname %>)</span>
+                            <span class="list-group-item-heading">email_address - ( <%= e.email_address %> )</span>
+                            <span class="list-group-item-heading">phone - ( <%= e.phone %> ) </span>
+                            <span class="list-group-item-heading">
+                              <a href="/indetail<%=e.id%>" class="btn btn-info mr-1 mb-1 btn-success btn-sm">in detail</a>
+                            </span>
+                            
+                            <% if(!e.delivered){%>
+                              <span class="list-group-item-heading">
+                                <a href="/delivered<%=e.id%>" class="btn mr-1 mb-1 btn-success btn-sm">delivered</a>
+                              </span>
+                              <%} %>
+                            
+                            <span class="list-group-item-heading">
+                              <a class="btn btn-icon btn-danger mr-1" href="/cartdelete<%=e.id%>"><i class="la la-trash-o"></i></a>
+                            </span>
+
+                            <ul class="list-unstyled users-list m-0 float-right">
+
+                                <%e.cart.forEach(item => {%>
+                                <li data-toggle="tooltip" data-popup="tooltip-custom" data-original-title="<%=item.name%>" class="avatar avatar-sm pull-up">
+                                    <img class="media-object rounded-circle no-border-top-radius no-border-bottom-radius" src="uploads/<%=item.image%>" alt="Avatar">
+                                </li>
+                                <%})%>
+
+                            </ul>
+                            <p class="list-group-item-text mb-0">
+                            <span class="list-group-item-heading">companyname -( <%= e.companyname %> )</span>
+                            <span class="list-group-item-heading">region - ( <%= e.region %> )</span>
+                            <span class="list-group-item-heading">district - ( <%= e.district %> )</span>
+                            <span class="list-group-item-heading">address - ( <%= e.address %> )</span>
+                            </p>
+                        </div>
+                      </div>
+
+                    <%})%>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </div>
+</section>
+<!-- Header footer section End -->
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////-->

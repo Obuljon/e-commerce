@@ -1,0 +1,46 @@
+  <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong></div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+              <% if (sologoods && sologoods.length > 0) {
+                sologoods.forEach(el => { %>
+                  <div class="col-sm-6 col-lg-3 mb-3" data-aos="fade-up">
+                  <div class="block-4 text-center border">
+                    <figure class="block-4-image">
+                      <a href="/singleshop<%=el._id%>"><img src="/uploads/<%=el.image%>" alt="Image placeholder" class="img-fluid"></a>
+                    </figure>
+                    <div class="block-4-text p-4">
+                      <h3><a href="/singleshop<%=el._id%>"><%= el.name %></a></h3>
+                      <p class="mb-0"><%= el.categories %> uchun.   narhi <%= el.price %> $</p>  
+                    </div>
+                  </div>
+                </div>
+                <% }); } else {%>
+                // Your code for handling the case when the array is empty goes here  
+            <% }%>
+        </div>
+        <div class="row" data-aos="fade-up">
+            <div class="col-md-12 text-center">
+              <div class="site-block-27">
+                <ul>
+                  <% indexgoods.forEach(e =>{%>
+                    <li><a href="/searchpage<%=e%>"><%=e%></a></li>
+                  <%})%>  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        
+  
+        <%-include(`../partial/categories.ejs`) %>
+    </div>
+  

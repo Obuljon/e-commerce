@@ -1,0 +1,81 @@
+<div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-0"><a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Tank Top T-Shirt</strong></div>
+      </div>
+    </div>
+  </div>  
+
+  <div class="site-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="uploads/<%=material.image%>" width="80%" height="60%" alt="Image" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+          <h2 class="text-black"><%=material.name %></h2>
+          <p><%=material.categories%>ga</p>
+          <p>rangi <%=material.color%></p>
+          <p class="mb-4">olchami <%=material.size%></p>
+          <p><strong class="text-primary h4"><%=material.price%> $</strong></p>  
+          <div class="mb-5">
+            <div class="input-group mb-3" style="max-width: 120px;">
+            <div class="input-group-prepend">
+              <button id="buttonminus"  class="btn btn-outline-primary" type="button">&minus;</button>
+            </div>
+            <p id="shopnumber" type="text" class="form-control text-center">1</p>
+            <div class="input-group-append">
+              <button id="buttonplus"  class="btn btn-outline-primary" type="button">&plus;</button>
+            </div>
+          </div>
+          </div>
+            <p><a href="/cart<%=material.id%>" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%-include(`../partial/products.ejs`) %>
+
+<script>
+  const id = `<%-material.id%>`
+  const image = `<%-material.image%>` 
+  const name = `<%-material.name%>`
+  const price = `<%- material.price%>`
+  const number = `<%- material.number %>`
+
+
+  document.getElementById("buttonplus").addEventListener("click", function() {
+    fetch(`/api/pluscart`, {
+    method: 'GET',
+    headers: {
+      'Content-Type':'application/json'
+        }
+      })
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById("shopnumber").innerText = data
+      })
+    .catch(error => {
+      console.log(error);
+      });
+    });
+
+document.getElementById("buttonminus").addEventListener("click", function() {
+  fetch(`/api/minuscart`, {
+      method: 'GET',
+      headers: {
+      'Content-Type': 'application/json'
+      }
+  })
+  .then(response => response.json())
+  .then(data => {
+      document.getElementById("shopnumber").innerText = data
+  })
+  .catch(error => {
+      console.log(error);
+  });
+});
+
+
+</script>

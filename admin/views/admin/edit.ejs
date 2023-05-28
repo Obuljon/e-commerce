@@ -1,0 +1,139 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">Basic Form Elements</h3>
+        </div>
+        <div class="content-header-right col-md-8 col-12">
+          <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item active">Form Elements
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-body"><!-- Basic Inputs start -->
+<section class="textarea-select">
+    <% if (message.errors) {
+        message.errors.forEach(msg => { %>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+            <%= msg %>  
+            </div>
+          </div>
+          <% }) } else if (message.success) { %> 
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+              <div>
+                <%= message.success %>
+              </div>
+            </div>
+          <% } %>
+<!-- Textarea start -->
+<div class="row">
+    <div class="col-12 mt-3 mb-1">
+        <h4 class="text-uppercase"></h4>
+        <p></p>
+    </div>
+</div>
+<form action="/edit<%=goods.id%>" method="post" enctype="multipart/form-data">
+<div class="row match-height">
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"></h4>
+            </div>
+            <div class="card-block">
+                <div class="card-body">
+                    <h5 class="mt-2">Mahsulot nomi</h5>
+                        <input type="text" class="form-control" id="basicTextarea" rows="3" name="name" value="<%=goods.name%>">
+                    <h5 class="mt-2">Mahsulot narhi</h5>
+                        <input type="number" class="form-control" id="placeTextarea" rows="3"name="price" value="<%=goods.price%>" name="number" value="<%=goods.number%>">
+                    <h5 class="mt-2">Mahsulot surat</h5>
+                        <p class="text-muted">479x340</p>
+                        <input type="file" class="form-control" id="descTextarea" accept="image/png, image/gif, image/jpeg"  rows="3" name="image" value="<%=goods.image%>">
+                    <h5 class="mt-2">Mahsulot soni</h5>
+                        <p class="text-muted"></p>
+                        <input type="number" class="form-control" id="descTextarea" rows="3"name="number" value="<%=goods.number%>" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title"></h4>
+            </div>
+            <div class="card-block">
+                    <div class="card-body">
+                        <h5 class="mt-2">Mahsulot rangi</h5>
+                            <select class="form-control" id="basicSelect" name="color" >
+                            <option value="<%=goods.color%>"><%=goods.color%></option>
+                            <option value="qora">qora</option>
+                            <option value="oq">oq</option>
+                            <option value="yashil">yashil</option>
+                            <option value="ko'k">ko'k</option>
+                            <option value="qizil">qizil</option>
+                            <option value="sariq">sariq</option>
+                            </select>
+                        <h5 class="mt-2">Mahsulot hajmi</h5>
+                        <p></p>
+                        
+                            <select class="custom-select" id="customSelect" name="size">
+                                <option value="<%=goods.size%>"><%=goods.size%></option>
+                                <option value="katta">katta</option>
+                                <option value="ortacha">o'rtacha</option>
+                                <option value="kichik">kichik</option>
+                            </select>
+                        <h5 class="mt-2">Mahsulot kimlarga</h5>
+                        <p></p>
+                        
+                            <select class="custom-select" id="customSelect" name="categories">
+                                <option value="<%=goods.categories%>"><%=goods.categories%></option>
+                                <option value="bolalar">bolalar</option>
+                                <option value="ayollar">ayollar</option>
+                                <option value="erkaklar">erkaklar</option>
+                            </select>
+                        <h5 class="mt-2">Mahsulot turi</h5>
+                        <p></p>
+                        
+                            <!--11.toplam mehnat kamarlar -->
+                            <select class="custom-select" id="countrySelect"  name="type">
+                                <option value="<%=goods.type%>"><%=goods.type%></option>
+                                <option value="accessories">akssuarlar</option>
+                                <option value="shoes_clothes">oyoq_kiyimlar</option>
+                                <option value="bags">sumkalar</option>
+                                <option value="underwear">ichki_kiyimlar</option>
+                                <option value="loincloths">bel kiyimlar</option>
+                                <option value="headwear">bosh_kiyimlar</option>
+                                <option value="outerwear">ustki kiyimlar</option>
+                                <option value="all_my_clothes">toplam bazim kiyimlar</option>
+                                <option value="total_formal_wear">toplam rasmiy kiyimlar</option>
+                                <option value="total_sportswear">toplam sport kiyimlar</option>
+                                <option value="total_style_clothes">toplam stil kiyimlar</option>
+                                <option value="total_household_clothes">toplam uy kiyimlar</option>
+                                <option value="total_work_clothes">toplam mehnat kiyimlar</option>
+                                <option value="._and_other_clothes">va boshqa kiyimlar</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <button type="submit" class="btn btn-info" style="margin-left: 387px;">edit</button>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<!-- Textarea end -->
+</section>
+      </div>
+    </div>
+  </div>
+  <!-- ////////////////////////////////////////////////////////////////////////////-->

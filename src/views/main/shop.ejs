@@ -1,0 +1,206 @@
+<script>
+  let _vs = '<%-mainhref._vs%>'
+  let _price = '<%-mainhref._price%>'
+  let _size = '<%-mainhref._size%>'
+  let _gender = '<%-mainhref._gender%>'
+  let _type = '<%-mainhref._type%>'
+</script>
+<div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mb-0"><a href="/">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="site-section">
+    <div class="container">
+
+      <div class="row mb-5">
+        <div class="col-md-9 order-2">
+
+          <div class="row">
+            <div class="col-md-12 mb-5">
+              <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
+              <div class="d-flex">
+                <div class="dropdown mr-1 ml-md-auto">
+                  <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Latest
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                    <a class="dropdown-item" href="/shop/<%=mainhref._price%>/<%=mainhref._size%>/erkaklar/<%=mainhref._type%>/1">Men</a>
+                    <a class="dropdown-item" href="/shop/<%=mainhref._price%>/<%=mainhref._size%>/ayollar/<%=mainhref._type%>/1">Women</a>
+                    <a class="dropdown-item" href="/shop/<%=mainhref._price%>/<%=mainhref._size%>/bolalar/<%=mainhref._type%>/1">Children</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-5">
+            <% if (goods && goods.length > 0) {
+              goods.forEach(el => { %>
+                <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                  <figure class="block-4-image">
+                    <a href="/singleshop<%=el.id%>"><img src="/uploads/<%=el.image%>" alt="Image placeholder" class="img-fluid"></a>
+                  </figure>
+                  <div class="block-4-text p-4">
+                    <h3><a href="/singleshop<%=el.id%>"><%= el.name %></a></h3>
+                    <p class="mb-0"><%= el.categories %> uchun.   narhi <%= el.price %> $</p>  
+                  </div>
+                </div>
+              </div>
+              <% });
+            } else {%>
+              // Your code for handling the case when the array is empty goes here  
+           <% }
+         %>
+
+          </div>
+          <div class="row" data-aos="fade-up">
+            <div class="col-md-12 text-center">
+              <div class="site-block-27">
+                <ul>
+                    <%if(mainhref._vs > 1){%>
+                      <li><a href="/shop/all/<%=mainhref._size%>/<%=mainhref._gender%>/<%=mainhref._type%>/<%=mainhref._vs - 1%>"><</a></li>
+                      <%}%>
+                    <% pagenetion.forEach(e =>{%>
+                      <li><a href="/shop/all/<%=mainhref._size%>/<%=mainhref._gender%>/<%=mainhref._type%>/<%=e%>"><%=e%></a></li>
+                      <%})%>  
+                      <%if(mainhref._vs < pagenetion.length){%>
+                        <li><a href="/shop/all/<%=mainhref._size%>/<%=mainhref._gender%>/<%=mainhref._type%>/<%=+mainhref._vs + 1%>">></a></li>
+                      <%}%>        
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 order-1 mb-5 mb-md-0">
+          <div class="border p-4 rounded mb-4" id="numbercategories">
+            <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+            
+          </div>
+
+          <div class="border p-4 rounded mb-4">
+            <div class="mb-4">
+              <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
+              <div id="slider-range" class="border-primary" ></div>
+              <input id="amount" class="form-control border-0 pl-0 bg-white" value="<%-mainhref._price%>"/>
+              
+              <label for="customRange2" class="form-label">kimlarga</label>
+              <select class="form-control" aria-label=".form-select-sm example" id="gender" >
+                <option value="<%=mainhref._gender%>">all</option>
+                <option value="ayollar">ayollar</option>
+                <option value="erkaklar">erkaklar</option>
+                <option value="bolalar">bolalar</option>
+              </select>
+              <label for="customRange2" class="form-label">o'lchami</label>
+              <select class="form-control" aria-label=".form-select-sm example" id="size" >
+                <option value="<%=mainhref._size%>">all</option>
+                <option value="katta">katta</option>
+                <option value="ortacha">o'rtacha</option>
+                <option value="kichik">kichik</option>
+              </select>
+              <div class="">
+                <label for="customRange2" class="form-label">mahsulot turi</label>
+                <select class="form-control" id="type" >
+                  <option value="<%=mainhref._type%>">all</option>
+                  <option value="accessories">akssuarlar</option>
+                  <option value="shoes_clothes">oyoq_kiyimlar</option>
+                  <option value="bags">sumkalar</option>
+                  <option value="underwear">ichki_kiyimlar</option>
+                  <option value="loincloths">bel kiyimlar</option>
+                  <option value="headwear">bosh_kiyimlar</option>
+                  <option value="outerwear">ustki kiyimlar</option>
+                  <option value="all_my_clothes">toplam bazim kiyimlar</option>
+                  <option value="total_formal_wear">toplam rasmiy kiyimlar</option>
+                  <option value="total_sportswear">toplam sport kiyimlar</option>
+                  <option value="total_style_clothes">toplam stil kiyimlar</option>
+                  <option value="total_household_clothes">toplam uy kiyimlar</option>
+                  <option value="total_work_clothes">toplam mehnat kiyimlar</option>
+                </select>
+              </div>
+                <button class="btn btn-primary" onclick="filterProducts()">Filter</button>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <%-include(`../partial/categories.ejs`) %>
+
+     
+  </div>
+  
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+  <script>
+    
+  let maxPrice
+  let minPrice
+  if(_price == "all"){
+    maxPrice = 500;
+    minPrice = 0
+  }else{
+    let maxandminprice = _price.split("-")
+    minPrice = +maxandminprice[0];
+    maxPrice = +maxandminprice[1]
+  }
+  $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: 500,
+      values: [ minPrice, maxPrice ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+      }
+    });
+    $( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 ) +
+      " - " + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+
+  
+function filterProducts() {
+    let amount = document.getElementById("amount").value;
+    let size = document.getElementById("size").value;
+    let type = document.getElementById("type").value;
+    let gender = document.getElementById("gender").value;
+    let range = amount.replace(/\$/g, "").split(" - ");
+    let minPrice = range[0];
+    let maxPrice = range[1];
+    window.location.href = `/shop/${minPrice}-${maxPrice}/${size}/${gender}/${type}/${_vs}`;
+  }
+  
+ 
+(function() {
+  fetch("/api/numbercategories", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Serverdan geçerli bir yanıt alınamadı.');
+      }
+    })
+    .then(data => {
+      const categories = document.querySelector("#numbercategories");
+      const ul = document.createElement("ul");
+      ul.className = "list-unstyled mb-0"
+      ul.innerHTML = `  <li class="mb-1"><a href="/shop/all/all/erkaklar/all/1" class="d-flex"><span>Men</span> <span class="text-black ml-auto">${data[0].erkaklar}</span></a></li>
+                        <li class="mb-1"><a href="/shop/all/all/ayollar/all/1" class="d-flex"><span>Women</span> <span class="text-black ml-auto">${data[0].ayollar}</span></a></li>
+                        <li class="mb-1"><a href="/shop/all/all/bolalar/all/1" class="d-flex"><span>Children</span> <span class="text-black ml-auto">${data[0].bolalar}</span></a></li>`
+      categories.appendChild(ul);
+    })
+    .catch(error => {
+      console.error(error);
+    });
+})();
+
+  </script>

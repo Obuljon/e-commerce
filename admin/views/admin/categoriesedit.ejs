@@ -1,0 +1,91 @@
+
+<div class="app-content content">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">categories edit</h3>
+        </div>
+        <div class="content-header-right col-md-8 col-12">
+          <div class="breadcrumbs-top float-md-right">
+            <div class="breadcrumb-wrapper mr-1">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item active">
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="content-body"><!-- Basic Inputs start -->
+<section class="basic-inputs">
+    <% if (message.errors) {
+        message.errors.forEach(msg => { %>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+            <div>
+            <%= msg %>  
+            </div>
+          </div>
+          <% }) } else if (message.success) { %> 
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+              <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+              <div>
+                <%= message.success %>
+              </div>
+            </div>
+          <% } %>
+    
+      <div class="row match-height">
+        <div class="col-xl-6 col-lg-6 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">old image</h4>
+                </div>
+                <div class="card-block">
+                    <div class="card-body">
+                        <fieldset class="form-group">
+                            <img src="uploads/<%=categoriese.image%>" width="80%" height="70%" alt="no photo">
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12">
+            <form action="/categories/<%=categoriese._id%>" method="post" enctype="multipart/form-data">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="card-title">new name</h4>
+                  </div>
+                  <div class="card-block">
+                      <div class="card-body">
+                          <fieldset class="form-group">
+                              <input  type="text" class="form-control" name="name" accept="image/png, image/gif, image/jpeg"  value="<%=categoriese.name%>">
+                          </fieldset>
+                      </div>
+                  </div>
+                  <div class="card-header">
+                      <h4 class="card-title">new image</h4>
+                  </div>
+                  <div class="card-block">
+                      <div class="card-body">
+                          <fieldset class="form-group">
+                              <input name="image" type="file" class="form-control" >
+                          </fieldset>
+                      </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-info" style="margin-left: 80%;">send</button>
+              </form>
+            </div>
+          </div>
+</section>
+<!-- Basic Inputs end -->
+
+<!-- Textarea end -->
+</section>
+      </div>
+    </div>
+  </div>
