@@ -20,7 +20,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/e-commerce", { useNewUrlParser:true,
 
 app.set('views', './src/views');
 app.set("view engine", "ejs");
-app.set("port", 8080);
+app.set("port", 4040);
 
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.urlencoded({extended:true}));
@@ -60,12 +60,12 @@ app.listen(app.get('port'), () => {
     console.info(`Server is running on PORT: ${app.get('port')}`);
 });
 
-import { spawn } from "child_process";
-const indexProcess = spawn('node', ['admin.js']);
+// import { spawn } from "child_process";
+// const indexProcess = spawn('node', ['admin.js']);
 
-indexProcess.stdout.on('data', (data) => {
-  console.log(`admin.js ishga tushirildi: ${data}`);
-});
+// indexProcess.stdout.on('data', (data) => {
+//   console.log(`admin.js ishga tushirildi: ${data}`);
+// });
 
 
 
